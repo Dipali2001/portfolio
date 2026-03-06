@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipali Dhanwade</title>
+    <link rel="stylesheet" href="../static/style1.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <!-- 3D Background Elements -->
+    <div class="background-scene">
+        <div class="grid-overlay"></div>
+        
+        <!-- Existing Shapes -->
+        <div class="shape sphere-3d"></div>
+        <div class="shape fluid-3d"></div>
+        <div class="shape donut-3d"></div>
+        <div class="shape capsule-3d"></div>
+
+        <!-- NEW: Extra Fluid (Dark Lava) -->
+        <div class="shape fluid-extra"></div>
+        
+        <!-- NEW: Small Background Orbs -->
+        <div class="shape small-orb-1"></div>
+        <div class="shape small-orb-2"></div>
+        <div class="shape small-orb-3"></div>
+        <div class="shape small-orb-4"></div>
+      
+        <div class="shape atmospheric-glow"></div>
+    </div>
+
+    <div class="foreground-scene">
+        <!-- NEW: Overlapping Orb (Floats OVER the glass card) -->
+        <div class="shape orb-overlap"></div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-container">
+        
+        <aside class="left-pane">
+            <h1 class="brand-title">Dipali Dhanwade</h1>
+            <p class="brand-subtitle">Cloud Engineer</p>
+        </aside>
+
+        <main class="glass-card">
+            <div class="chat-header">
+                <h2>Introdunction</h2>
+                <span class="status-dot"></span>
+            </div>
+
+            <div class="chat-history" id="chat-history">
+            </div>
+
+            <!-- <div class="input-area">
+                <input type="file" id="excel-upload" accept=".xlsx, .xls" hidden>
+                <button class="icon-btn" id="upload-btn" title="Upload Excel">
+                    <i class="ph ph-paperclip"></i>
+                </button>
+                <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off">
+                <button class="icon-btn send-btn" id="send-btn">
+                    <i class="ph ph-paper-plane-right"></i>
+                </button>
+            </div> -->
+            <!-- <div id="upload-status" class="upload-status"></div> -->
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>

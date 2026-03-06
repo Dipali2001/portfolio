@@ -1,0 +1,721 @@
+html {
+    background-color: #050510;
+    overscroll-behavior-y: none; /* Prevents rubber-banding */
+    height: 100%;
+}
+
+:root {
+    --bg-gradient: radial-gradient(circle at 50% 50%, #1a1c2e 0%, #050510 100%);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --primary-accent: #6c5ce7;
+    --text-white: #ffffff;
+    --text-muted: #b8b8d0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: auto !important;
+    background: transparent; 
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    color: var(--text-white);
+    position: relative;
+}
+
+/* --- BACKGROUND --- */
+.background-scene {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-gradient);
+}
+
+.grid-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.shape {
+    position: absolute;
+    filter: blur(0px);
+    z-index: -1;
+}
+
+/* --- SHAPE STYLES & ANIMATIONS --- */
+.sphere-3d {
+    width: 350px; height: 350px; border-radius: 50%; top: 5%; right: 15%;
+    background: radial-gradient(circle at 30% 30%, #3f0aaa 0%, #31048d 20%, #0f0c29 80%);
+    box-shadow: 0 0 60px rgba(0, 38, 254, 0.4);
+    animation: float-sphere 4s infinite ease-in-out;
+}
+
+.fluid-3d {
+    width: 500px; height: 500px; bottom: -40%; left: -10%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    box-shadow: inset 20px 20px 60px rgba(255, 255, 255, 0.2), inset -20px -20px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(118, 75, 162, 0.5);
+    animation: fluid-morph 10s infinite ease-in-out alternate;
+}
+
+.fluid-extra {
+    width: 400px; height: 300px; top: 5%; left: 30%;
+    background: linear-gradient(180deg, #8c2cd1 0%, #000000 100%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    box-shadow: inset 10px 10px 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(108, 92, 231, 0.2);
+    opacity: 0.8;
+    animation: fluid-morph 12s infinite ease-in-out reverse;
+}
+
+.atmospheric-glow {
+    width: 800px; height: 800px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.15), transparent 70%);
+    z-index: -2;
+}
+
+/* --- ORB VARIATIONS --- */
+.small-orb-1 { width: 100px; height: 100px; bottom: 40%; left: 85%; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff, #4c00fe, #000); box-shadow: 0 0 20px #382e9ecc; animation: float-fast 6s infinite ease-in-out; }
+.small-orb-2 { width: 60px; height: 60px; top: 50%; right: 35%; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff, #6c5ce7, #000); box-shadow: 0 0 15px #6c5ce7; animation: float-fast 8s infinite ease-in-out reverse; }
+.small-orb-3 { width: 230px; height: 230px; bottom: 2%; left: 85%; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #e0ace7, #bc2cb5, #000); box-shadow: 0 0 20px #9d3db3cc; animation: float-fast 6s infinite ease-in-out; }
+.small-orb-4 { width: 180px; height: 180px; bottom: 0%; left: 20%; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #c8b3d2, #9f45bd, #000); box-shadow: 0 0 20px #9f45bd; animation: float-fast 5s infinite ease-out reverse; }
+
+.orb-overlap {
+    position: absolute;
+    width: 150px; height: 150px; border-radius: 50%; z-index: 10;
+    top: 530px; right: 690px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 1) 0%, rgba(255, 0, 204, 0.934) 20%, rgba(51, 0, 153, 1) 100%);
+    box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 0, 204, 0.4);
+    animation: float-overlap 10s infinite ease-in-out;
+    pointer-events: none;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes float-sphere { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
+@keyframes fluid-morph { 0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); } 100% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: rotate(10deg); } }
+@keyframes float-fast { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-40px) scale(1.1); } }
+@keyframes float-overlap { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-20px, -30px); } }
+
+/* --- HERO LAYOUT --- */
+.main-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 100vh;
+    gap: 50px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.left-pane { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.brand-title { font-size: 4rem; font-weight: 700; background: linear-gradient(120deg, #ffffff, #a0a0c0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -3px; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.brand-subtitle { font-size: 1.2rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-left: 5px; margin-bottom: 50px; }
+
+/* --- GLASS CARD (UI) --- */
+.glass-card {
+    flex: 2; height: 80%; background: rgba(21, 21, 33, 0.6);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px; box-shadow: 0 20px 50px rgba(52, 51, 51, 0.5);
+    display: flex; flex-direction: column; padding: 24px;
+}
+
+/* --- HERO DISPLAY MODIFICATIONS --- */
+.hero-display {
+    padding: 40px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(21, 21, 33, 0.8) 0%, rgba(108, 92, 231, 0.15) 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    height: 100%;
+}
+
+.hero-text { flex: 1.2; }
+
+.hero-greeting {
+    font-size: 2rem; margin-bottom: 10px;
+    background: linear-gradient(to right, #fff, var(--primary-accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.status-line { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.status-text { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.hero-description { font-size: 1.1rem; line-height: 1.6; color: var(--text-white); margin-bottom: 30px; opacity: 0.9; }
+
+/* --- PHOTO SECTION --- */
+.hero-visual {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    background: var(--primary-accent);
+    overflow: hidden; /* Clips the image to the morphing shape */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    animation: morphFrame 8s ease-in-out infinite;
+    z-index: 5;
+}
+
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 50% centers horizontally, 0% pulls the top of the photo to the top of the frame */
+    object-position: 50% 0%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    animation: imageFloat 12s ease-in-out infinite;
+}
+
+@keyframes imageFloat {
+    0%, 100% { transform: scale(1.05); } /* Slight zoom to hide edges */
+    50% { transform: scale(1); }      /* Breathing effect */
+}
+
+/* Keep your existing morphFrame animation */
+@keyframes morphFrame {
+    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
+}
+
+.frame-gradient {
+    position: absolute;
+    inset: 0;
+    /* This adds a professional glass overlay on top of your photo */
+    background: linear-gradient(to bottom, transparent, rgba(26, 28, 46, 0.4));
+    z-index: 3;
+    pointer-events: none;
+}
+/* --- BUTTONS --- */
+.hero-cta { display: flex; flex-direction: row; gap: 15px; margin-top: 30px; flex-wrap: nowrap; }
+
+.cta-btn {
+    padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease;
+    white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; width: auto;
+}
+
+.cta-btn.primary { background: var(--primary-accent); color: white; box-shadow: 0 0 15px rgba(108, 92, 231, 0.4); }
+.cta-btn.secondary { border: 1px solid var(--glass-border); color: white; background: rgba(255, 255, 255, 0.05); }
+
+/* --- ROTATING TEXT --- */
+.rotating-box { height: 60px; overflow: hidden; margin-top: 0px; margin-bottom: 0px; position: relative; z-index: 5; }
+.rotating-list { display: flex; flex-direction: column; animation: moveUp 9s infinite cubic-bezier(0.76, 0, 0.24, 1); }
+.rotating-item {
+    height: 60px; line-height: 60px; font-size: 2.5rem; font-weight: 800; white-space: nowrap;
+    background: linear-gradient(90deg, #4285F4 0%, #D946EF 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+@keyframes moveUp {
+    0%, 25% { transform: translateY(0); }
+    33%, 58% { transform: translateY(-60px); }
+    66%, 91% { transform: translateY(-120px); }
+    100% { transform: translateY(-180px); }
+}
+
+/* --- CERTIFICATIONS SECTION --- */
+.cert-flex-row {
+    display: flex; flex-direction: row; justify-content: flex-start;
+    gap: 240px; padding: 60px 0; width: 100%; margin-left: -50px;
+    flex-wrap: nowrap; overflow: visible;
+}
+
+.cert-item-container { display: flex; flex-direction: column; align-items: center; gap: 20px; isolation: isolate; flex-shrink: 0; }
+.cert-wrapper { position: relative; width: 380px; height: 240px; }
+
+.cert-rect {
+    position: relative; width: 100%; height: 100%; background: #ffffff; border-radius: 12px;
+    z-index: 10; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+}
+
+.cert-rect img { width: 100%; height: 100%; object-fit: contain; padding: 10px; background: white; }
+
+.cert-badge {
+    position: absolute; top: 0; right: -120px; width: 240px; height: 240px; border-radius: 50%;
+    background: radial-gradient(circle, #6c5ce7, #3f0aaa); z-index: -1; cursor: pointer;
+    overflow: hidden; transition: right 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-badge img { width: 100%; height: 100%; object-fit: cover; }
+.cert-badge.active { right: -220px; }
+
+.cert-info-box {
+    width: 380px; padding: 15px; background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 10px; text-align: center;
+}
+
+/* --- OTHER ACHIEVEMENTS --- */
+.achievements-section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; text-align: center; position: relative; z-index: 10; }
+.section-title { font-size: 3rem; margin-bottom: 50px; color: var(--text-white); }
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+.achievement-card {
+    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border); padding: 40px; border-radius: 20px; transition: transform 0.3s ease;
+}
+
+/* --- FOOTER --- */
+.glass-footer {
+    width: 100%; padding: 40px 5%; background: rgba(18, 18, 28, 0.4);
+    backdrop-filter: blur(15px); border-top: 1px solid var(--glass-border);
+    position: relative; z-index: 30; margin-top: 50px;
+}
+
+.footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet and Smaller Desktop */
+@media (max-width: 1024px) {
+    .main-container {
+        height: auto;
+        flex-direction: column;
+        padding-top: 100px;
+        gap: 30px;
+    }
+    
+    .left-pane { text-align: center; }
+    
+    .glass-card { width: 100%; height: auto; }
+
+    .cert-flex-row {
+        justify-content: center;
+        margin-left: 0;
+        gap: 150px;
+    }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+    /* Glass Card Hero Responsive */
+    .hero-content {
+        flex-direction: column-reverse; /* Photo on Top, Text on Bottom */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-visual { width: 100%; }
+    .photo-frame { width: 220px; height: 220px; margin: 0 auto; }
+
+    .status-line { justify-content: center; }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .cta-btn { width: 100%; max-width: 300px; }
+
+    /* Certifications Responsive */
+    .cert-flex-row {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        gap: 50px;
+        overflow: hidden; /* Prevent sideways scrolling on mobile */
+    }
+
+    .cert-wrapper, .cert-info-box {
+        width: 90vw; /* Scale to phone width */
+        max-width: 380px;
+    }
+
+    .cert-badge {
+        width: 200px; height: 200px;
+        right: -100px; /* Adjust peek for smaller size */
+    }
+
+    .cert-badge.active {
+        right: -160px; /* Prevent sliding off-screen */
+    }
+
+    .brand-title { font-size: 2.5rem; }
+    .rotating-item { font-size: 1.8rem; }
+    
+    .footer-content { flex-direction: column; text-align: center; }
+}
+
+/* Container for the 5 boxes */
+.tech-stack-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Keeps them centered even on the second row */
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows them to jump to the next line */
+    margin-top: 30px;
+    max-width: 1000px; /* Optional: limits width so it looks like a nice grid */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tech-box {
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.4s ease;
+}
+
+/* THE CIRCLE LOGO FORMAT */
+/* THE CIRCLE LOGO FORMAT */
+.logo-circle {
+    width: 75px;
+    height: 75px;
+    background: rgba(255, 255, 255, 0.07); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    padding: 0; 
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; 
+    object-fit: cover; 
+    background-color: white; 
+}
+
+.tech-box:hover .logo-circle {
+    transform: scale(1.1);
+    border-color: var(--primary-accent);
+    background: rgba(108, 92, 231, 0.1); 
+}
+
+.tech-box:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tech-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-top: 10px;
+}
+
+.experience-stack {
+    display: flex;
+    flex-direction: column; /* Force one up, one down */
+    gap: 80px;             /* Large gap to separate the two roles */
+    align-items: center;    /* Center the boxes horizontally */
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* --- EXPERIENCE CONTAINER --- */
+.experience-glass-box {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.03); /* Semi-transparent frosted base */
+    backdrop-filter: blur(20px); /* Background blur for depth */
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Light semi-transparent border */
+    border-radius: 30px;
+    padding: 50px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.exp-text-side { flex: 1.5; text-align: left; z-index: 2; }
+
+.company-name { font-size: 2rem; color: var(--text-white); margin-bottom: 5px; }
+.job-title { color: var(--primary-accent); font-weight: 600; letter-spacing: 1px; }
+.exp-duration { color: var(--text-muted); font-size: 0.9rem; font-family: monospace; }
+
+.exp-bullets { list-style: none; margin-top: 25px; color: var(--text-muted); line-height: 1.8; }
+.exp-bullets li::before {
+    content: "▹";
+    color: var(--primary-accent);
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* --- DYNAMIC MORPHING IMAGE SECTION --- */
+.exp-visual-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* --- THE MULTI-IMAGE SLIDER LOGIC --- */
+
+.experience-morph {
+    /* Your existing morphing and glass styles */
+    width: 320px;
+    height: 320px;
+    position: relative;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    background: var(--primary-accent);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    animation: morphFrame 8s ease-in-out infinite;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.slide-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; 
+    transition: transform 0.6s ease;
+}
+
+.cycle-4 .slide-img { 
+    animation: crossfade4 12s infinite; 
+}
+.cycle-4 .slide-img:nth-child(1) { animation-delay: 0s; }
+.cycle-4 .slide-img:nth-child(2) { animation-delay: 3s; }
+.cycle-4 .slide-img:nth-child(3) { animation-delay: 6s; }
+.cycle-4 .slide-img:nth-child(4) { animation-delay: 9s; }
+
+@keyframes crossfade4 {
+    0%, 25% { opacity: 1; }   /* Visible for 3 seconds */
+    30%, 100% { opacity: 0; }  /* Hidden for the rest */
+}
+
+/* --- 2-IMAGE LOGIC (Education) --- */
+.cycle-2 .slide-img { 
+    animation: crossfade2 8s infinite; 
+}
+.cycle-2 .slide-img:nth-child(1) { animation-delay: 0s; }
+.cycle-2 .slide-img:nth-child(2) { animation-delay: 4s; }
+
+/* Safety: hide extra image tags in Education if they exist */
+.cycle-2 .slide-img:nth-child(n+3) { display: none; }
+
+@keyframes crossfade2 {
+    0%, 50% { opacity: 1; }    /* Visible for 4 seconds */
+    55%, 100% { opacity: 0; }   /* Hidden for 4 seconds */
+}
+
+
+
+/* Hover Highlight */
+.experience-morph:hover .slide-img {
+    filter: brightness(1.2); /* Image highlights on hover */
+}
+
+.experience-morph:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(108, 92, 231, 0.5);
+}
+
+/* Decorative background glow */
+.exp-orb-back {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: var(--primary-accent);
+    filter: blur(100px);
+    opacity: 0.2;
+    z-index: 1;
+}
+
+
+
+/* Ensure the header inside the glass box is flexible */
+/* Stack the name and date vertically */
+.exp-header {
+    display: flex;
+    flex-direction: column; /* Changed from row to column */
+    gap: 5px;               /* Space between name and duration */
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.company-branding {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Position the duration directly under the job/degree title */
+.exp-duration {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-family: monospace;
+    display: block;        /* Ensures it takes its own line */
+    margin-top: 5px;
+}
+
+/* Fix for the list spacing in the glass box */
+.exp-bullets {
+    list-style: none;
+    margin-top: 25px;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.exp-bullets li {
+    margin-bottom: 10px;
+}
+
+/* --- CONTACT SECTION HIGHLIGHTS --- */
+.contact-card {
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-card i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-accent);
+    transition: transform 0.3s ease;
+}
+
+.contact-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--text-white);
+}
+
+.contact-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Glowing Border Effect on Hover */
+.contact-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary-accent);
+    background: rgba(108, 92, 231, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(108, 92, 231, 0.2);
+}
+
+.contact-card:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Background Animated Glow */
+.card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, var(--primary-accent), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(40px);
+}
+
+.contact-card:hover .card-glow {
+    opacity: 0.2;
+}
+
+/* Brand-specific colors on hover */
+.linkedin:hover { border-color: #ffffff; }
+.github:hover { border-color: #ffffff; }
+.email:hover { border-color: #ffffff; }
+
+/* --- FOOTER SOCIAL ICONS --- */
+.footer-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--text-muted); /* Default state */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Brand Colors & Glows */
+.social-icon.linkedin:hover {
+    color: #0077b5;
+    filter: drop-shadow(0 0 8px rgba(0, 119, 181, 0.6));
+    transform: translateY(-3px);
+}
+
+.social-icon.github:hover {
+    color: #ffffff;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+    transform: translateY(-3px);
+}
+
+.social-icon.email:hover {
+    color: #ea4335; /* Gmail Red */
+    filter: drop-shadow(0 0 8px rgba(234, 67, 53, 0.5));
+    transform: translateY(-3px);
+}
+
+/* Apply the same logic to your Contact Section cards if you want them to match */
+.contact-card.linkedin:hover i { color: #0077b5; }
+.contact-card.github:hover i { color: #ffffff; }
+.contact-card.email:hover i { color: #ea4335; }

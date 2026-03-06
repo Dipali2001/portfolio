@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipali Dhanwade | Cloud Portfolio</title>
+    
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='fevicon/icon.jpg') }}">
+    <link rel="stylesheet" href="../static/style1.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+    <div class="background-scene">
+        <div class="grid-overlay"></div>
+        <div class="shape sphere-3d"></div>
+        <div class="shape fluid-3d"></div>
+        <div class="shape fluid-extra"></div>
+        <div class="shape small-orb-1"></div>
+        <!-- <div class="shape small-orb-2"></div> -->
+        <div class="shape small-orb-3"></div>
+        <div class="shape small-orb-4"></div>
+        <div class="shape atmospheric-glow"></div>
+    </div>
+
+    <div class="foreground-scene">
+        <div class="shape orb-overlap"></div>
+    </div>
+
+    <div class="main-container">
+        <aside class="left-pane">
+            <h1 class="brand-title">Dipali Dhanwade</h1>
+            
+                <div class="rotating-box">
+                    <div class="rotating-list">
+                        <div class="rotating-item">Optimization.</div>
+                        <div class="rotating-item">Cloud Security.</div>
+                        <div class="rotating-item">CI/CD Pipelines.</div>
+                        <div class="rotating-item">Automation.</div>
+                        <div class="rotating-item">Cloud Security.</div>
+                        <div class="rotating-item">Troubleshooting.</div>
+                    </div>
+                </div>
+
+            <!-- <p class="brand-subtitle">Cloud Engineer</p> -->
+        </aside>
+
+        <main class="glass-card hero-display">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-greeting">Cloud Engineer</h2>
+                    <div class="status-line">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Specializing in GCP</span>
+                    </div>
+                    <p class="hero-description">
+                        Hi, I'm Dipali. I build resilient, automated cloud infrastructure 
+                        that scales with your business. I specialize in turning complex 
+                        architectural requirements into high-availability reality.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="{{ url_for('static', filename='Dipali_Dhanwade_Resume.pdf') }}" 
+                        class="cta-btn primary" 
+                        download="Dipali_Dhanwade_Resume.pdf">
+                        Download Resume
+                        </a>
+                        <a href="mailto:dipali.dhanwade2026@gmail.com" class="cta-btn secondary">Contact Me</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="photo-frame">
+                        <img src="{{ url_for('static', filename='images/profile/profile.png') }}" alt="Dipali Dhanwade" class="hero-photo">
+                        <div class="frame-gradient"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <section class="achievements-section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <i class="ph ph-intersect"></i>
+                <h3>AWS To GCP Migration</h3>
+                <p>Orchestrated a large-scale migration of compute, storage, and database services from AWS to GCP, ensuring minimal downtime and architectural optimization.</p>
+            </div>
+            <div class="achievement-card">
+                <i class="ph ph-activity"></i>
+                <h3>IAC Automation Platform</h3>
+                <p>Architected and developed an automation platform that converts inventory metadata into production-ready Terraform code, significantly accelerating infrastructure provisioning.</p>
+            </div>
+        </div>
+    </section>
+
+<section class="achievements-section">
+    <h2 class="section-title">Tech Stack</h2>
+    <div class="tech-stack-row">
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/gcp.png') }}" alt="GCP">
+            </div>
+            <span class="tech-name">Google Cloud</span>
+        </div>
+
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/aws.png') }}" alt="AWS">
+            </div>
+            <span class="tech-name">AWS</span>
+        </div>
+
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/k8s.png') }}" alt="K8s">
+            </div>
+            <span class="tech-name">Kubernetes</span>
+        </div>
+
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/docker.png') }}" alt="Docker">
+            </div>
+            <span class="tech-name">Docker</span>
+        </div>
+
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/terraform.png') }}" alt="Terraform">
+            </div>
+            <span class="tech-name">Terraform</span>
+        </div>
+
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/linux.png') }}" alt="Linux">
+            </div>
+            <span class="tech-name">Linux</span>
+        </div>
+
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/git.png') }}" alt="Git">
+            </div>
+            <span class="tech-name">Git</span>
+        </div>
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/github.png') }}" alt="Github">
+            </div>
+            <span class="tech-name">Github</span>
+        </div>
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/jenkins.png') }}" alt="Jenkins">
+            </div>
+            <span class="tech-name">Jenkins</span>
+        </div>
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/helm.png') }}" alt="Helm">
+            </div>
+            <span class="tech-name">Helm</span>
+        </div>
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/grafana.png') }}" alt="Grafana">
+            </div>
+            <span class="tech-name">Grafana</span>
+        </div>
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/ansible.png') }}" alt="Ansible">
+            </div>
+            <span class="tech-name">Ansible</span>
+        </div>
+    </div> </section>
+
+<section class="achievements-section">
+    <h2 class="section-title">Professional Experience</h2>
+    
+    <div class="experience-stack">
+        
+        <div class="experience-glass-box cycle-4">
+            <div class="exp-text-side">
+                <div class="exp-header">
+                    <div class="company-branding">
+                        <h3 class="company-name">Searce Inc</h3>
+                        <p class="job-title">Cloud Engineer</p>
+                    </div>
+                    <span class="exp-duration">2024 — Present</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Infrastructure as Code: Automated enterprise cloud environments using Terraform for consistency and speed.</li>
+                    <li>Cloud-Native & K8s: Deployed and managed scalable applications on GCP via Cloud Run and Kubernetes (GKE).</li>
+                    <li>Cloud Migration: Led AWS to GCP migrations, utilizing STS for secure access and managing complex VM transfers.</li>
+                    <li>DevOps & Automation: Designed CI/CD pipelines and custom automation scripts to optimize delivery and reliability.</li>
+                </ul>
+            </div>
+            <div class="exp-visual-side">
+                <div class="photo-frame experience-morph">
+                    <img src="{{ url_for('static', filename='images/searce1.png') }}" alt="Exp 1" class="slide-img">
+                    <img src="{{ url_for('static', filename='images/searce2.png') }}" alt="Exp 2" class="slide-img">
+                    <img src="{{ url_for('static', filename='images/searce3.png') }}" alt="Exp 3" class="slide-img">
+                    <img src="{{ url_for('static', filename='images/searce4.png') }}" alt="Exp 4" class="slide-img">
+                    <div class="frame-gradient"></div>
+                </div>
+                <div class="exp-orb-back"></div>
+            </div>
+        </div>
+
+        <div class="experience-glass-box cycle-4">
+            <div class="exp-text-side">
+                <div class="exp-header">
+                    <div class="company-branding">
+                        <h3 class="company-name">Coditas</h3>
+                        <p class="job-title">Cloud Intern</p>
+                    </div>
+                    <span class="exp-duration">Oct 2023 — Mar 2024 (6 Months)</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Full-Stack Development: Engineered responsive web applications using Python and MySQL, managing the entire backend-to-frontend integration.</li>
+                    <li>API Architecture: Designed and implemented RESTful APIs in Python to facilitate seamless data exchange between services and databases.</li>
+                    <li>Cloud-Native Deployment: Orchestrated API containerization and deployment using Docker and Google Cloud Run with secure API Gateway access.</li>
+                    <li>SDLC Management: Managed the full Software Development Life Cycle (SDLC) using OOP principles to deliver scalable, high-availability applications.</li>
+
+                </ul>
+            </div>
+            <div class="exp-visual-side">
+                <div class="photo-frame experience-morph" style="animation-direction: reverse;">
+                    <img src="{{ url_for('static', filename='images/coditas1.png') }}" alt="Exp 1" class="slide-img">
+                    <img src="{{ url_for('static', filename='images/coditas2.png') }}" alt="Exp 2" class="slide-img">
+                    <img src="{{ url_for('static', filename='images/coditas3.png') }}" alt="Exp 1" class="slide-img">
+                    <img src="{{ url_for('static', filename='images/coditas4.png') }}" alt="Exp 2" class="slide-img">
+                    <div class="frame-gradient"></div>
+                </div>
+                <div class="exp-orb-back" style="background: var(--primary-accent); opacity: 0.1;"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="achievements-section">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-flex-row">
+
+        <div class="cert-item-container">
+            <div class="cert-wrapper">
+                <div class="cert-rect">
+                    <img src="{{ url_for('static', filename='certificates/cdl_cert.png') }}" alt="GCP CDL">
+                </div>
+                <div class="cert-badge" onclick="popBadge(this)">
+                    <img src="{{ url_for('static', filename='certificates/cdl_badge.png') }}" alt="Badge">
+                </div>
+            </div>
+            <div class="cert-info-box">
+                <h3>Cloud Digital Leader</h3>
+                <p>GCP core products and business goals.</p>
+            </div>
+        </div>
+        
+        <div class="cert-item-container">
+            <div class="cert-wrapper">
+                <div class="cert-rect">
+                    <img src="{{ url_for('static', filename='certificates/ace_cert.png') }}" alt="GCP ACE">
+                </div>
+                <div class="cert-badge" onclick="popBadge(this)">
+                    <img src="{{ url_for('static', filename='certificates/ace_badge.png') }}" alt="Badge">
+                </div>
+            </div>
+            <div class="cert-info-box">
+                <h3>Associate Cloud Engineer</h3>
+                <p>Deploying and managing GCP infrastructure.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- <section class="achievements-section">
+        <h2 class="section-title">About Me</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card" style="grid-column: 1 / -1;">
+                <p>I specialize in translating business needs into high-availability cloud architecture with a focus on SRE principles.</p>
+            </div>
+        </div>
+    </section> -->
+
+<section class="achievements-section">
+    <h2 class="section-title">Education</h2>
+    
+    <div class="experience-stack">
+        <div class="experience-glass-box cycle-2">
+            <div class="exp-text-side">
+                <div class="exp-header">
+                    <div class="company-branding">
+                        <h3 class="company-name">Deogiri Institute Of Engineering And Management Studies</h3>
+                        <p class="job-title">B.E. in Computer Science</p>
+                    </div>
+                    <span class="exp-duration">2019 — 2023</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Specialized in Computer Science and Engineering</li>
+                    <li>Graduated with First Class Distinction and CGPA of 8.07</li>
+                    <li>Core Member of the Google Developer Student Clubs (GDSC)</li>
+                </ul>
+            </div>
+            
+            <div class="exp-visual-side">
+                <div class="photo-frame experience-morph">
+                    <img src="{{ url_for('static', filename='images/college1.png') }}" alt="College" class="slide-img">
+                    <img src="{{ url_for('static', filename='images/college2.png') }}" alt="Graduation" class="slide-img">
+                    <div class="frame-gradient"></div>
+                </div>
+                <div class="exp-orb-back" style="background: #a29bfe; opacity: 0.15;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="achievements-section contact-section" style="padding-bottom: 80px;">
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="achievements-grid">
+        <a href="https://www.linkedin.com/in/dipali-dhanwade/" target="_blank" class="achievement-card contact-card linkedin">
+            <div class="card-glow"></div>
+            <i class="ph ph-linkedin-logo"></i>
+            <h3>LinkedIn</h3>
+            <p>Professional Network</p>
+        </a>
+
+        <a href="https://github.com/Dipali2001" target="_blank" class="achievement-card contact-card github">
+            <div class="card-glow"></div>
+            <i class="ph ph-github-logo"></i>
+            <h3>GitHub</h3>
+            <p>Technical Projects</p>
+        </a>
+
+        <a href="mailto:dipali.dhanwade2026@gmail.com" class="achievement-card contact-card email">
+            <div class="card-glow"></div>
+            <i class="ph ph-envelope"></i>
+            <h3>Email</h3>
+            <p>dipali.dhanwade2026@gmail.com</p>
+        </a>
+    </div>
+</section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>© 2026 Dipali Dhanwade</p>
+                <p class="text-muted">B.E. Computer Science | 2024</p>
+            </div>
+                <div class="footer-right">
+                    <a href="https://www.linkedin.com/in/dipali-dhanwade/" class="social-icon linkedin" title="LinkedIn">
+                        <i class="ph-fill ph-linkedin-logo"></i>
+                    </a>
+                    <a href="https://github.com/Dipali2001" class="social-icon github" title="GitHub">
+                        <i class="ph-fill ph-github-logo"></i>
+                    </a>
+                    <a href="mailto:dipali.dhanwade2026@gmail.com" class="social-icon email" title="Email">
+                        <i class="ph-fill ph-envelope"></i>
+                    </a>
+                </div>
+        </div>
+    </footer>
+</body>
+</html>
