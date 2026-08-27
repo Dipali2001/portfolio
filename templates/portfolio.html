@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dipali Dhanwade | Cloud Portfolio</title>
     
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='fevicon/icon.jpg') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='fevicon/icon.png') }}">
     <link rel="stylesheet" href="../static/style1.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
@@ -160,6 +160,24 @@
         </div>
         <div class="tech-box">
             <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/gitlab.png') }}" alt="gitlab">
+            </div>
+            <span class="tech-name">Gitlab</span>
+        </div>
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/mysql.png') }}" alt="mysql">
+            </div>
+            <span class="tech-name">MYSQL</span>
+        </div>
+        <div class="tech-box">
+            <div class="logo-circle">
+                <img src="{{ url_for('static', filename='logos/bitbucket.png') }}" alt="bitbucket">
+            </div>
+            <span class="tech-name">Bitbucket</span>
+        </div>
+        <!-- <div class="tech-box">
+            <div class="logo-circle">
                 <img src="{{ url_for('static', filename='logos/helm.png') }}" alt="Helm">
             </div>
             <span class="tech-name">Helm</span>
@@ -170,12 +188,8 @@
             </div>
             <span class="tech-name">Grafana</span>
         </div>
-        <div class="tech-box">
-            <div class="logo-circle">
-                <img src="{{ url_for('static', filename='logos/ansible.png') }}" alt="Ansible">
-            </div>
-            <span class="tech-name">Ansible</span>
-        </div>
+    -->
+
     </div> </section>
 
 <section class="achievements-section">
