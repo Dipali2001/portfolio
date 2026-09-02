@@ -320,6 +320,28 @@ body {
         margin-left: 0;
         gap: 150px;
     }
+
+    /* Experience / Education cards: stop squeezing side-by-side, stack instead */
+    .experience-glass-box {
+        flex-direction: column;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .exp-text-side,
+    .exp-visual-side {
+        flex: none;
+        width: 100%;
+    }
+
+    .exp-header,
+    .company-branding {
+        align-items: center;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 }
 
 /* Phones */
@@ -371,6 +393,62 @@ body {
     .rotating-item { font-size: 1.8rem; }
     
     .footer-content { flex-direction: column; text-align: center; }
+
+    /* Experience / Education cards on phones */
+    .experience-glass-box {
+        padding: 30px;
+        gap: 25px;
+    }
+
+    .experience-morph {
+        width: 220px;
+        height: 220px;
+    }
+
+    .exp-orb-back {
+        width: 180px;
+        height: 180px;
+    }
+
+    .exp-bullets { text-align: left; }
+
+    .section-title { font-size: 2.2rem; margin-bottom: 30px; }
+
+    .achievements-section { padding: 60px 5%; }
+
+    .tech-box { width: 140px; height: 140px; }
+
+    .logo-circle { width: 60px; height: 60px; }
+
+    /* Purely decorative floating orb; keep it out of the way on small screens */
+    .orb-overlap { display: none; }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+    .brand-title { font-size: 2rem; }
+    .rotating-item { font-size: 1.4rem; }
+
+    .photo-frame { width: 180px; height: 180px; }
+
+    .hero-description { font-size: 1rem; }
+
+    .cta-btn { padding: 10px 18px; font-size: 0.9rem; }
+
+    .section-title { font-size: 1.7rem; }
+
+    .tech-box { width: 120px; height: 120px; gap: 10px; }
+    .logo-circle { width: 50px; height: 50px; }
+    .tech-name { font-size: 0.8rem; }
+
+    .experience-glass-box { padding: 20px; }
+    .experience-morph { width: 160px; height: 160px; }
+    .exp-orb-back { width: 140px; height: 140px; }
+
+    .cert-wrapper, .cert-info-box { width: 92vw; max-width: 300px; }
+    .cert-wrapper { height: 190px; }
+    .cert-badge { width: 160px; height: 160px; right: -80px; }
+    .cert-badge.active { right: -130px; }
 }
 
 /* Container for the 5 boxes */
